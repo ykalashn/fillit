@@ -6,7 +6,7 @@
 #    By: kpesonen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 15:44:24 by kpesonen          #+#    #+#              #
-#    Updated: 2019/12/30 16:44:09 by kpesonen         ###   ########.fr        #
+#    Updated: 2020/01/07 16:55:23 by kpesonen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,17 +38,17 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ ar rc $(NAME) $(OBJS)
-	@ echo "make done"
+	@ echo "libft make done"
 
 $(OBJS):
 	@ gcc $(CFLAGS) -c $(SRCS) -I $(INCLUDES)
 
 clean:
 	@ rm -f $(OBJS)
-	@ echo "clean objs"
+	@ echo "libft clean objs"
 
 fclean: clean
 	@ rm -f $(NAME)
-	@ echo "clean bin"
+	@ echo "libft clean bin"
 
 re: fclean all
