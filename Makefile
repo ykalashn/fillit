@@ -6,7 +6,7 @@
 #    By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 11:34:23 by ykalashn          #+#    #+#              #
-#    Updated: 2020/01/07 17:16:05 by kpesonen         ###   ########.fr        #
+#    Updated: 2020/01/14 18:19:44 by ykalashn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fillit
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c
+SRCS = main.c valid.c
 
 OBJS = $(SRCS:.c=.o)
 
