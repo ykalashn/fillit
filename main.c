@@ -6,7 +6,7 @@
 /*   By: kpesonen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 17:17:44 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/14 19:08:05 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/16 12:45:55 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_tetri	*reader(char *file)
 
 int		main(int ac, char **av)
 {
-	t_tetri	*list; //declaring our linked list just like any variable
+	t_piece	*list; //declaring our linked list just like any variable
 
 	list = NULL; //setting value of our linked list to null for now
 	if (ac != 2) //checking if we have a file to read or not

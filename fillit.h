@@ -6,7 +6,7 @@
 /*   By: kpesonen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 15:54:25 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/14 17:08:58 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/16 12:45:41 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # include <fcntl.h>
 # include "libft.h"
 
-typedef	struct		s_tetri
+typedef	struct		s_piece
 {
+	struct s_piece	*next;
 	char			letter;
-	char			**piece;
-	struct s_tetri	*next; 
+	int[8]			coor;
 
-}					t_tetri;
+}					t_piece;
 
 int	validate(char *buf, int size);
 
