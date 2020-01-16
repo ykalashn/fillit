@@ -6,11 +6,17 @@
 /*   By: kpesonen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 17:17:44 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/16 12:45:55 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/16 16:12:18 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void	printer(t_piece *list)
+{
+	
+
+}
 
 t_tetri	*reader(char *file)
 {
@@ -49,5 +55,6 @@ int		main(int ac, char **av)
 	}
 //	solver(list); //calling our solver function
 //	free(list); //calling a function that frees everything at the end
+	printer(list);
 	return (0);
 }
