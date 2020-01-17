@@ -3,22 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpesonen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 17:17:44 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/16 16:12:18 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/17 18:20:50 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	printer(t_piece *list)
+void	free_list(t_piece *list)
 {
-	
+	t_piece	*tmp;
 
+	while (list)
+	{
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
 }
 
-t_tetri	*reader(char *file)
+void	printer(t_piece *list)
+{
+	t_piece *tmp;
+	int i;
+
+	tmp = list;
+	while (tmp != NULL)
+	{
+		i = 0;
+		while (i < 8)
+		{
+			ft_putnbr(tmp->coor[i]);
+			i++;
+		}
+		tmp = tmp->next;
+		ft_putchar('\n');	
+	}
+}
+
+void	solver(t_piece *list)
+{
+	char	**map;
+	int		size;
+
+	size = start_size(list);
+	map = create_map(size);
+	while (!solve_map(map, list, size))
+	{
+		free_map(map, size);
+		size++;
+		map = create_map(size);
+	}
+	print_map(map);
+	free_map(map, size);
+}
+
+t_piece	*reader(char *file)
 {
 	//	this function reads the file and stores it in 'buf'
 	char	buf[546]; //size set for 'buf' can fit max 26 tetrimino pieces
@@ -29,10 +71,10 @@ t_tetri	*reader(char *file)
 	ret = read(fd, buf, 546); //opening, reading and closing the file, saving it to 'buf'
 	close(fd);
 	if (ret < 20 || ret > 545) //first check for file size, if it is too small or big
-		return (1);
+		return (NULL);
 	buf[ret] = '\0';
 	if (validate(buf, ret) == 1) //calling validate function which checks 'buf'
-		return (1); //exits and prints error if 'validate' function failed
+		return (NULL); //exits and prints error if 'validate' function failed
 	return (create_list(buf, ret));
 	//calling 'create_list' which creates our linked list and returns it to 'main'
 }
@@ -53,8 +95,9 @@ int		main(int ac, char **av)
 		ft_putendl("error"); //printing error message and exiting if there was an error
 		return (1);
 	}
-//	solver(list); //calling our solver function
-//	free(list); //calling a function that frees everything at the end
+	solver(list); //calling our solver function
 	printer(list);
+	free_list(list);
+//	while (1);
 	return (0);
 }
