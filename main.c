@@ -6,11 +6,7 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 17:17:44 by kpesonen          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/01/16 17:24:42 by ykalashn         ###   ########.fr       */
-=======
-/*   Updated: 2020/01/19 14:44:38 by kpesonen         ###   ########.fr       */
->>>>>>> kim
+/*   Updated: 2020/01/19 15:12:11 by ykalashn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +15,6 @@
 
 void	free_list(t_piece *list)
 {
-<<<<<<< HEAD
-	//I do not know how many elements there are
-	//0 -> 0 -> 0 -> NuLL
-	//while loop
-	//each element of alinked list will have *coor
-	//I want to print the numbers which are in coor
-	//coor[8] and I want to print all of them
-	//after I print 8 elements, I will move to the next element in the LL
-	t_piece *tmp;
-	int i;
-
-	tmp = list;
-	i = 0;
-	while (tmp != NULL)
-	{
-		while (i < 8)
-		{
-			printf("%d", tmp->coor[i]);
-			i++;
-		}
-		i = 0;
-		tmp = tmp->next;
-		printf("\n");	
-	}
-=======
 	t_piece	*tmp;
 
 	while (list)
@@ -100,7 +71,6 @@ void	solver(t_piece *list)
 	}
 	print_map(map, size);
 	free_map(map, size);
->>>>>>> kim
 }
 
 t_piece	*reader(char *file)
