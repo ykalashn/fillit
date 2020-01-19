@@ -6,7 +6,7 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 17:17:44 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/19 15:12:11 by ykalashn         ###   ########.fr       */
+/*   Updated: 2020/01/19 16:43:39 by ykalashn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,6 @@ void	print_map(char **map, int size)
 	}
 }
 
-/*void	printer(t_piece *list)
-{
-	t_piece *tmp;
-	int i;
-
-	tmp = list;
-	while (tmp != NULL)
-	{
-		i = 0;
-		while (i < 8)
-		{
-			ft_putnbr(tmp->coor[i]);
-			i++;
-		}
-		tmp = tmp->next;
-		ft_putchar('\n');	
-	}
-}*/
-
 void	solver(t_piece *list)
 {
 	char	**map;
@@ -65,6 +46,8 @@ void	solver(t_piece *list)
 	map = create_map(size);
 	while (!solve_map(map, list, size))
 	{
+		ft_putendl("fail");
+		ft_putnbr(size);
 		free_map(map, size);
 		size++;
 		map = create_map(size);
@@ -75,42 +58,37 @@ void	solver(t_piece *list)
 
 t_piece	*reader(char *file)
 {
-	//	this function reads the file and stores it in 'buf'
-	char	buf[546]; //size set for 'buf' can fit max 26 tetrimino pieces
+	char	buf[546];
 	int		fd;
 	int		ret;
 
 	fd = open(file, O_RDONLY);
-	ret = read(fd, buf, 546); //opening, reading and closing the file, saving it to 'buf'
+	ret = read(fd, buf, 546);
 	close(fd);
-	if (ret < 20 || ret > 545) //first check for file size, if it is too small or big
+	if (ret < 20 || ret > 545)
 		return (NULL);
 	buf[ret] = '\0';
-	if (validate(buf, ret) == 1) //calling validate function which checks 'buf'
-		return (NULL); //exits and prints error if 'validate' function failed
+	if (validate(buf, ret) == 1)
+		return (NULL);
 	return (create_list(buf, ret));
-	//calling 'create_list' which creates our linked list and returns it to 'main'
 }
 
 int		main(int ac, char **av)
 {
-	t_piece	*list; //declaring our linked list just like any variable
+	t_piece	*list;
 
-	list = NULL; //setting value of our linked list to null for now
-	if (ac != 2) //checking if we have a file to read or not
+	list = NULL;
+	if (ac != 2)
 	{
-		ft_putendl("usage: ./fillit source_file"); //printing instructions
+		ft_putendl("usage: ./fillit source_file");
 		return (1);
 	}
-	if ((list = reader(av[1])) == NULL) //calling our reader and error check function
-	// and sets return value from 'reader' function as our linked list values
+	if ((list = reader(av[1])) == NULL)
 	{
-		ft_putendl("error"); //printing error message and exiting if there was an error
+		ft_putendl("error");
 		return (1);
 	}
-	solver(list); //calling our solver function
-//	printer(list);
+	solver(list);
 	free_list(list);
-//	while (1);
 	return (0);
 }

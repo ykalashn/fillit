@@ -6,7 +6,7 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:27:32 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/16 17:23:06 by ykalashn         ###   ########.fr       */
+/*   Updated: 2020/01/19 16:43:31 by ykalashn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		shift(int *arr)
 	int		min_x;
 	int		min_y;
 	int		i;
-	
+
 	i = 0;
 	min_x = arr[i];
 	while (i < 8)
@@ -44,31 +44,7 @@ void		shift(int *arr)
 	}
 }
 
-/*int		*get_coords(char *buf)
-{
-	int		coor[8];
-	int		i;
-	int		x;
-	int		y;
-
-	i = 0;
-	x = 0;
-	y = 1;
-	while (i < 19)
-	{
-		if (buf[i] == '#')
-		{
-			coor[x] = i % 5;
-			coor[y] = i / 5;
-			x += 2;
-			y += 2;
-		}
-		i++;
-	}
-	return (shift(coor));
-}*/
-
-t_piece	*create_piece(char *buf, char letter)
+t_piece		*create_piece(char *buf, char letter)
 {
 	t_piece	*new;
 	int		i;
@@ -97,7 +73,7 @@ t_piece	*create_piece(char *buf, char letter)
 	return (new);
 }
 
-t_piece	*create_list(char *buf, int size)
+t_piece		*create_list(char *buf, int size)
 {
 	int		i;
 	char	letter;
