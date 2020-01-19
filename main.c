@@ -6,12 +6,11 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 17:17:44 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/19 16:43:39 by ykalashn         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:24:25 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 void	free_list(t_piece *list)
 {
@@ -46,8 +45,6 @@ void	solver(t_piece *list)
 	map = create_map(size);
 	while (!solve_map(map, list, size))
 	{
-		ft_putendl("fail");
-		ft_putnbr(size);
 		free_map(map, size);
 		size++;
 		map = create_map(size);

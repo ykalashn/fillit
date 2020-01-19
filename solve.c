@@ -3,46 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpesonen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 18:24:26 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/19 16:43:37 by ykalashn         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:30:17 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	place_piece(int *arr, char **map, char letter)
+void	place_piece(t_piece *piece, char **map, int x_index, int y_index)
 {
 	int		i;
 	int		x;
 	int		y;
 
 	i = 0;
-	x = 0;
-	y = 0;
+	x = piece->coor[i] + x_index;
+	y = piece->coor[i + 1] + y_index;
 	while (i < 8)
 	{
-		x = arr[i];
-		y = arr[i + 1];
-		map[y][x] = letter;
+		map[y][x] = piece->letter;
 		i += 2;
+		x = piece->coor[i] + x_index;
+		y = piece->coor[i + 1] + y_index;
 	}
 }
 
-int		check_overlap(char **map, int *coor)
+int		check_overlap(char **map, int *coor, int x_index, int y_index)
 {
 	int		i;
-	int		count;
+	int		x;
+	int		y;
 
 	i = 0;
-	count = 4;
-	while (count > 0)
+	x = coor[i] + x_index;
+	y = coor[i + 1] + y_index;
+	while (i < 8)
 	{
-		if (map[coor[i + 1]][coor[i]] != '.')
+		if (map[y][x] != '.')
 			return (1);
 		i += 2;
-		count--;
+		x = coor[i] + x_index;
+		y = coor[i + 1] + y_index;
 	}
 	return (0);
 }
@@ -98,13 +101,12 @@ int		solve_map(char **map, t_piece *piece, int size)
 	{
 		while (!inside_map(x, piece->coor, size, 'x'))
 		{
-			if (!check_overlap(map, piece->coor))
+			if (!check_overlap(map, piece->coor, x, y))
 			{
-				place_piece(piece->coor, map, piece->letter);
+				place_piece(piece, map, x, y);
 				if (solve_map(map, piece->next, size))
 					return (1);
-				else
-					place_piece(piece->coor, map, '.');
+				remove_piece(piece, map, x, y);
 			}
 			x++;
 		}

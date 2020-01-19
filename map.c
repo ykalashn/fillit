@@ -6,11 +6,29 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 17:11:45 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/19 16:43:35 by ykalashn         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:23:04 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void	remove_piece(t_piece *piece, char **map, int x_index, int y_index)
+{
+	int		i;
+	int		x;
+	int		y;
+
+	i = 0;
+	x = piece->coor[i] + x_index;
+	y = piece->coor[i + 1] + y_index;
+	while (i < 8)
+	{
+		map[y][x] = '.';
+		i += 2;
+		x = piece->coor[i] + x_index;
+		y = piece->coor[i + 1] + y_index;
+	}
+}
 
 void	free_map(char **map, int size)
 {
