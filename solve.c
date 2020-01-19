@@ -6,7 +6,7 @@
 /*   By: kpesonen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 18:24:26 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/19 18:23:26 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:30:17 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int		solve_map(char **map, t_piece *piece, int size)
 				place_piece(piece, map, x, y);
 				if (solve_map(map, piece->next, size))
 					return (1);
-				place_piece(piece, map, x, y);
+				remove_piece(piece, map, x, y);
 			}
 			x++;
 		}
