@@ -6,7 +6,7 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:27:32 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/19 15:54:31 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/19 16:53:22 by ykalashn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,13 @@ void		shift(int *arr)
 
 	i = 0;
 	min_x = arr[i];
+	min_y = arr[i + 1];
 	while (i < 8)
 	{
 		if (arr[i] < min_x)
 			min_x = arr[i];
-		i += 2;
-	}
-	i = 1;
-	min_y = arr[i];
-	while (i < 8)
-	{
-		if (arr[i] < min_y)
-			min_y = arr[i];
+		if (arr[i + 1] < min_y)
+			min_y = arr[i + 1];
 		i += 2;
 	}
 	i = 0;
