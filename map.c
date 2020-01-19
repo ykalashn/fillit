@@ -6,7 +6,7 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 17:11:45 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/17 19:55:47 by ykalashn         ###   ########.fr       */
+/*   Updated: 2020/01/19 14:36:30 by ykalashn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,32 @@
 
 void	free_map(char **map, int size)
 {
+	int i;
 
-
+	i = 0;
+	while (i < size)
+	{
+		ft_memdel((void **)&map[i]);
+		i++; 
+	}
+	ft_memdel((void **)&map);
 }
 
 char	**create_map(int size)
 {
 	int i;
+	char **map;
 
-	
+	i = 0;
+	map = (char **)ft_memalloc(sizeof(char *) * (size + 1));
+	while (i < size)
+	{
+		map[i] = ft_strnew(size);
+		ft_memset(map[i], '.', size);
+		i++;	
+	}
+	map[i] = '\0';
+	return (map);
 }
 
 int		count_pieces(t_piece *list)
