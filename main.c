@@ -6,15 +6,20 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 17:17:44 by kpesonen          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/01/16 17:24:42 by ykalashn         ###   ########.fr       */
+=======
+/*   Updated: 2020/01/19 14:44:38 by kpesonen         ###   ########.fr       */
+>>>>>>> kim
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-void	printer(t_piece *list)
+void	free_list(t_piece *list)
 {
+<<<<<<< HEAD
 	//I do not know how many elements there are
 	//0 -> 0 -> 0 -> NuLL
 	//while loop
@@ -38,6 +43,64 @@ void	printer(t_piece *list)
 		tmp = tmp->next;
 		printf("\n");	
 	}
+=======
+	t_piece	*tmp;
+
+	while (list)
+	{
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
+}
+
+void	print_map(char **map, int size)
+{
+	int		i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_putendl(map[i]);
+		i++;
+	}
+}
+
+/*void	printer(t_piece *list)
+{
+	t_piece *tmp;
+	int i;
+
+	tmp = list;
+	while (tmp != NULL)
+	{
+		i = 0;
+		while (i < 8)
+		{
+			ft_putnbr(tmp->coor[i]);
+			i++;
+		}
+		tmp = tmp->next;
+		ft_putchar('\n');	
+	}
+}*/
+
+void	solver(t_piece *list)
+{
+	char	**map;
+	int		size;
+
+	size = start_size(list);
+	map = create_map(size);
+	while (!solve_map(map, list, size))
+	{
+		free_map(map, size);
+		size++;
+		map = create_map(size);
+	}
+	print_map(map, size);
+	free_map(map, size);
+>>>>>>> kim
 }
 
 t_piece	*reader(char *file)
@@ -75,8 +138,9 @@ int		main(int ac, char **av)
 		ft_putendl("error"); //printing error message and exiting if there was an error
 		return (1);
 	}
-//	solver(list); //calling our solver function
-//	free(list); //calling a function that frees everything at the end
-	printer(list);
+	solver(list); //calling our solver function
+//	printer(list);
+	free_list(list);
+//	while (1);
 	return (0);
 }

@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 17:11:45 by kpesonen          #+#    #+#             */
 /*   Updated: 2020/01/19 14:36:30 by ykalashn         ###   ########.fr       */
+=======
+/*   By: kpesonen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/17 17:11:45 by kpesonen          #+#    #+#             */
+/*   Updated: 2020/01/17 17:23:40 by kpesonen         ###   ########.fr       */
+>>>>>>> kim
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +21,7 @@
 
 void	free_map(char **map, int size)
 {
+<<<<<<< HEAD
 	int i;
 
 	i = 0;
@@ -23,10 +31,15 @@ void	free_map(char **map, int size)
 		i++; 
 	}
 	ft_memdel((void **)&map);
+=======
+
+
+>>>>>>> kim
 }
 
 char	**create_map(int size)
 {
+<<<<<<< HEAD
 	int i;
 	char **map;
 
@@ -40,6 +53,10 @@ char	**create_map(int size)
 	}
 	map[i] = '\0';
 	return (map);
+=======
+
+
+>>>>>>> kim
 }
 
 int		count_pieces(t_piece *list)
