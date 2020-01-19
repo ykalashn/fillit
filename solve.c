@@ -6,7 +6,7 @@
 /*   By: kpesonen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 18:24:26 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/19 14:37:51 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/19 16:40:56 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		check_overlap(char **map, int *coor)
 	int		count;
 
 	i = 0;
-
 	count = 4;
 	while (count > 0)
 	{
@@ -48,10 +47,10 @@ int		check_overlap(char **map, int *coor)
 	return (0);
 }
 
-int		hi_coor(int	*arr, char xy)
+int		hi_coor(int *arr, char xy)
 {
 	int		hi;
-	int		i;	
+	int		i;
 
 	if (xy == 'x')
 		i = 0;
@@ -82,7 +81,7 @@ int		inside_map(int index, int *arr, int size, char xy)
 		hi = hi_coor(arr, 'y');
 		if (index + hi < size)
 			return (0);
-	}	
+	}
 	return (1);
 }
 
@@ -95,14 +94,14 @@ int		solve_map(char **map, t_piece *piece, int size)
 		return (1);
 	x = 0;
 	y = 0;
-	while (y < size && !inside_map(y, piece->coor, size, 'y'))
+	while (!inside_map(y, piece->coor, size, 'y'))
 	{
-		while (x < size && !inside_map(x, piece->coor, size, 'x'))
+		while (!inside_map(x, piece->coor, size, 'x'))
 		{
 			if (!check_overlap(map, piece->coor))
 			{
 				place_piece(piece->coor, map, piece->letter);
-				if (!solve_map(map, piece->next, size))
+				if (solve_map(map, piece->next, size))
 					return (1);
 				else
 					place_piece(piece->coor, map, '.');
