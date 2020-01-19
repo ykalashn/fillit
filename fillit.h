@@ -6,7 +6,7 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 15:54:25 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/17 17:30:53 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/19 14:44:54 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ t_piece				*create_list(char *buf, int size);
 int					start_size(t_piece *list);
 void				free_map(char **map, int size);
 char				**create_map(int size);
+int					solve_map(char **map, t_piece *piece, int size);
 
 #endif

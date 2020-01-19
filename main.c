@@ -6,7 +6,7 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 17:17:44 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/17 18:20:50 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/19 14:44:38 by kpesonen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,19 @@ void	free_list(t_piece *list)
 	}
 }
 
-void	printer(t_piece *list)
+void	print_map(char **map, int size)
+{
+	int		i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_putendl(map[i]);
+		i++;
+	}
+}
+
+/*void	printer(t_piece *list)
 {
 	t_piece *tmp;
 	int i;
@@ -41,7 +53,7 @@ void	printer(t_piece *list)
 		tmp = tmp->next;
 		ft_putchar('\n');	
 	}
-}
+}*/
 
 void	solver(t_piece *list)
 {
@@ -56,7 +68,7 @@ void	solver(t_piece *list)
 		size++;
 		map = create_map(size);
 	}
-	print_map(map);
+	print_map(map, size);
 	free_map(map, size);
 }
 
@@ -96,7 +108,7 @@ int		main(int ac, char **av)
 		return (1);
 	}
 	solver(list); //calling our solver function
-	printer(list);
+//	printer(list);
 	free_list(list);
 //	while (1);
 	return (0);
