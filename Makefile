@@ -6,7 +6,7 @@
 #    By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 11:34:23 by ykalashn          #+#    #+#              #
-#    Updated: 2020/01/19 15:12:16 by ykalashn         ###   ########.fr        #
+#    Updated: 2020/01/20 13:39:44 by kpesonen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,13 @@ NAME = fillit
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c valid.c makelist.c map.c solve.c
+DIR = ./fillitsrcs/
+
+SRCS = $(DIR)main.c $(DIR)valid.c $(DIR)makelist.c $(DIR)map.c $(DIR)solve.c
 
 OBJS = $(SRCS:.c=.o)
 
-INCLUDES = -I ./ -I ./libft/includes
+INCLUDES = -I ./fillitsrcs/includes -I ./libft/includes
 
 LIBFT = libft/
 
