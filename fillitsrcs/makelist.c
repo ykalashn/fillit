@@ -6,7 +6,7 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:27:32 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/19 16:53:22 by ykalashn         ###   ########.fr       */
+/*   Updated: 2020/01/21 14:38:09 by ykalashn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_piece		*create_piece(char *buf, char letter)
 	int		y;
 
 	if (!(new = (t_piece*)malloc(sizeof(t_piece))))
-		return (NULL);
+		exit(0);
 	i = 0;
 	x = 0;
 	y = 1;

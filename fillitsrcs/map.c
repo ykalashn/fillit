@@ -6,7 +6,7 @@
 /*   By: ykalashn <ykalashn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 17:11:45 by kpesonen          #+#    #+#             */
-/*   Updated: 2020/01/19 18:23:04 by kpesonen         ###   ########.fr       */
+/*   Updated: 2020/01/21 14:40:18 by ykalashn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ char	**create_map(int size)
 	char	**map;
 
 	i = 0;
-	map = (char **)ft_memalloc(sizeof(char *) * (size + 1));
+	if (!(map = (char **)ft_memalloc(sizeof(char *) * (size + 1))))
+		exit(0);
 	while (i < size)
 	{
-		map[i] = ft_strnew(size);
+		if (!(map[i] = ft_strnew(size)))
+			exit(0);
 		ft_memset(map[i], '.', size);
 		i++;
 	}
